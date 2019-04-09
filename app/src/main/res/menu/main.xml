@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
+<menu  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+    <item android:title="Settings"
+        android:orderInCategory="1"
+        android:icon="@android:drawable/ic_menu_set_as"
+        android:id="@+id/menuSettings"
+        app:showAsAction="collapseActionView"/>
+    <item android:title="Share"
+        android:orderInCategory="2"
+        android:id="@+id/menuShare"/>
+    <item android:title="Contact Us"
+        android:orderInCategory="3"
+        android:id="@+id/menuContact">
+        <menu>
+            <item android:title="Email"
+                android:id="@+id/menuEmail"/>
+            <item android:title="Phone"
+                android:id="@+id/menuPhone"/>
+        </menu>
+    </item>
+    <item android:title="Exit"
+        android:id="@+id/menuExit"
+        android:orderInCategory="4"/>
 </menu>

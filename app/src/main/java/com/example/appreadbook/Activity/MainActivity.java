@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.appreadbook.Adapter.TruyenAdapter;
@@ -43,14 +44,15 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById( R.id.fab );
-        fab.setOnClickListener( new View.OnClickListener() {
+        FloatingActionButton fab;
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make( view, "Replace with your own action", Snackbar.LENGTH_LONG )
-                        .setAction( "Action", null ).show();
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Just tap", Toast.LENGTH_SHORT).show();
             }
-        } );
+        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById( R.id.drawer_layout );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -125,11 +127,22 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.menuSettings:
+                Toast.makeText(this, "You choose Settings", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuShare:
+                Toast.makeText(this, "You choose Share", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuPhone:
+                Toast.makeText(this, "You choose Phone", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuEmail:
+                Toast.makeText(this, "You choose Email", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.menuExit:
+                Toast.makeText(this, "You choose Exit", Toast.LENGTH_SHORT).show();
+                break;
         }
 
         return super.onOptionsItemSelected( item );
