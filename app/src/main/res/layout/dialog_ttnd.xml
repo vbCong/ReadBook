@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textTTND"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginTop="5dp"
+        android:id="@+id/btnDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đọc truyện"
+        android:textColor="@android:color/black"
+        android:background="@android:color/holo_blue_light"/>
+
+</LinearLayout>

@@ -26,7 +26,7 @@ import retrofit2.Response;
 public class ChuongActivity extends AppCompatActivity {
 
     Button btnDocTruyen,btnNoiDung,btnTheoDoi;
-    ListView lvVanBan,lvAnh;
+    ListView lvVanBan;
     ArrayList<NOIDUNG> data;
     int IDCHUONG;
     @Override
@@ -54,7 +54,7 @@ public class ChuongActivity extends AppCompatActivity {
             public void onResponse(Call<List<NOIDUNG>> call, Response<List<NOIDUNG>> response) {
                 data = (ArrayList<NOIDUNG>) response.body();
                 NoiDungAdapter adapter = new NoiDungAdapter( ChuongActivity.this, R.layout.dong_noi_dung, data );
-                lvAnh.setAdapter( adapter );
+                lvVanBan.setAdapter( adapter );
             }
 
             @Override

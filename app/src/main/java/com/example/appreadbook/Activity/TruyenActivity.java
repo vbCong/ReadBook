@@ -32,11 +32,13 @@ public class TruyenActivity extends AppCompatActivity {
     private Dialog dialog;
     ListView lvDSChuong;
     ImageView imgAnhBia;
+    Call<TRUYEN> call;
     TextView textTenTruyen,textTacGia,textTheLoai,textSlChuong;
     Button btnDocTruyen,btnNoiDung,btnTheoDoi;
 
     ArrayList<CHUONG> data;
     int ID;
+    String ttnd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +60,14 @@ public class TruyenActivity extends AppCompatActivity {
                 startActivity( intent );
             }
         } );
-        btnDocTruyen.setOnClickListener( new View.OnClickListener() {
+        btnNoiDung.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog = new Dialog( TruyenActivity.this );
                 dialog.setTitle( "Nội Dung" );
-                dialog.setContentView( R.layout.activity_ttnd );
+                dialog.setContentView( R.layout.dialog_ttnd );
+                TextView txtTTND = (TextView) dialog.findViewById( R.id.textTTND );
+                txtTTND.setText( ttnd );
                 dialog.show();
             }
         } );
@@ -73,7 +77,7 @@ public class TruyenActivity extends AppCompatActivity {
 
             }
         } );
-        btnNoiDung.setOnClickListener( new View.OnClickListener() {
+        btnDocTruyen.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -81,14 +85,14 @@ public class TruyenActivity extends AppCompatActivity {
         } );
     }
 
-
     private void GetData() {
         Dataservice dataservice = APIService.getService();
-        Call<TRUYEN> call = dataservice.GETTRUYENBYID(ID);
+        call = dataservice.GETTRUYENBYID(ID);
         call.enqueue( new Callback<TRUYEN>() {
             @Override
             public void onResponse(Call<TRUYEN> call, Response<TRUYEN> response) {
                 TRUYEN truyen  = response.body();
+                ttnd = truyen.getTTND();
                 textTenTruyen.setText( truyen.getTEN() );
                 textTacGia.setText( "Tác Giả: " + truyen.getTACGIA() );
                 textTheLoai.setText( "Thể Loại: " + truyen.getTENTHELOAI() );

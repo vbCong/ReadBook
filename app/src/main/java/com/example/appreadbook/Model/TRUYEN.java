@@ -88,4 +88,9 @@ public class TRUYEN {
         this.tENTHELOAI = tENTHELOAI;
         this.aNHBIA = aNHBIA;
     }
+
+    public TRUYEN(int iD, String tTND) {
+        this.iD = iD;
+        this.tTND = tTND;
+    }
 }

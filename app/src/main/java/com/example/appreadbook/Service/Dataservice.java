@@ -86,4 +86,9 @@ public interface Dataservice {
     @FormUrlEncoded
     @POST("NOIDUNG.php")
     Call<List<NOIDUNG>> GETNOIDUNG(@Field("IDCHUONG") int IDCHUONG);
+
+    //Lấy thể loại của truyển thông qua id
+    @FormUrlEncoded
+    @POST("GETTTNDBYIDTRUYENBY.php")
+    Call<TRUYEN> GETTTNDBYIDTRUYENBY(@Field("ID") int ID);
 }
