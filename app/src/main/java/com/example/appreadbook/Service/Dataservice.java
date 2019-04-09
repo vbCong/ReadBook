@@ -1,6 +1,7 @@
 package com.example.appreadbook.Service;
 
 import com.example.appreadbook.Model.CHUONG;
+import com.example.appreadbook.Model.NOIDUNG;
 import com.example.appreadbook.Model.TRUYEN;
 
 import java.util.List;
@@ -82,6 +83,7 @@ public interface Dataservice {
     Call<List<CHUONG>> GETCHUONGTHEOID(@Field("ID") int ID);
 
     //Lấy các Truyen
-    @GET("NOIDUNG.php")
-    Call<List<String>> GETLINKANH();
+    @FormUrlEncoded
+    @POST("NOIDUNG.php")
+    Call<List<NOIDUNG>> GETNOIDUNG(@Field("IDCHUONG") int IDCHUONG);
 }

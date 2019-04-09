@@ -5,33 +5,33 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Trang Chủ" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_alarm"
+            android:icon="@drawable/alarm"
+            android:title="Truyện Đang Theo Dõi" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_newbook"
+            android:icon="@drawable/newbook"
+            android:title="Truyên Mới" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_xemnhieu"
+            android:icon="@drawable/eye"
+            android:title="Truyên Xem Nhiều" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Thể loại">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_image"
+                android:icon="@drawable/image"
+                android:title="Truyện Tranh" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_text"
+                android:icon="@drawable/text"
+                android:title="Truyện Chữ" />
         </menu>
     </item>
 
