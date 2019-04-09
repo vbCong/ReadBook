@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -141,7 +142,21 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "You choose Email", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.menuExit:
-                Toast.makeText(this, "You choose Exit", Toast.LENGTH_SHORT).show();
+
+
+//                    @Override
+//                    public void onClick(View view) {
+//                        //Khoi tao lai Activity main
+//                        Intent intent = new Intent(getApplicationContext(), R.class);
+//                        startActivity(intent);
+//
+//                        // Tao su kien ket thuc app
+//                        Intent startMain = new Intent(Intent.ACTION_MAIN);
+//                        startMain.addCategory(Intent.CATEGORY_HOME);
+//                        startActivity(startMain);
+//                        finish();
+//                    }
+//                });
                 break;
         }
 
@@ -155,9 +170,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+//            MainActivity mainActivity = new MainActivity();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.fragment, mainActivity).commit();
         } else if (id == R.id.nav_alarm) {
-
+//            TruyenActivity truyenActivity = new TruyenActivity();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.fragment, truyenActivity).commit();
         } else if (id == R.id.nav_newbook) {
 
         } else if (id == R.id.nav_xemnhieu) {
