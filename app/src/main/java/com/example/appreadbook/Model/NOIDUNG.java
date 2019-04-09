@@ -50,4 +50,17 @@ public void setIDCHUONG(String iDCHUONG) {
 this.iDCHUONG = iDCHUONG;
 }
 
+    public NOIDUNG(String iD, String aNH, String vANBAN, String iDCHUONG) {
+        this.iD = iD;
+        this.aNH = aNH;
+        this.vANBAN = vANBAN;
+        this.iDCHUONG = iDCHUONG;
+    }
+
+    public NOIDUNG(String iD, String aNH, String iDCHUONG) {
+        this.iD = iD;
+        this.aNH = aNH;
+        this.iDCHUONG = iDCHUONG;
+    }
+
 }

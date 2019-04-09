@@ -1,10 +1,14 @@
 package com.example.appreadbook.Activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.appreadbook.Adapter.NoiDungAdapter;
 import com.example.appreadbook.Model.NOIDUNG;
@@ -21,6 +25,7 @@ import retrofit2.Response;
 
 public class ChuongActivity extends AppCompatActivity {
 
+    Button btnDocTruyen,btnNoiDung,btnTheoDoi;
     ListView lvVanBan,lvAnh;
     ArrayList<NOIDUNG> data;
     int IDCHUONG;
@@ -48,11 +53,8 @@ public class ChuongActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<NOIDUNG>> call, Response<List<NOIDUNG>> response) {
                 data = (ArrayList<NOIDUNG>) response.body();
-
-                Log.d( "Tag", data.get( 0 ).getANH() );
-                Log.d( "Tag", data.get( 0 ).getVANBAN() );
-//                NoiDungAdapter adapter = new NoiDungAdapter( ChuongActivity.this, R.layout.dong_noi_dung, data );
-//                lvAnh.setAdapter( adapter );
+                NoiDungAdapter adapter = new NoiDungAdapter( ChuongActivity.this, R.layout.dong_noi_dung, data );
+                lvAnh.setAdapter( adapter );
             }
 
             @Override
@@ -64,7 +66,6 @@ public class ChuongActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
-        lvVanBan = (ListView)findViewById( R.id.dsNDVanBan );
-        lvAnh = (ListView)findViewById( R.id.dsNDAnh );
+        lvVanBan = (ListView)findViewById( R.id.listND );
     }
 }

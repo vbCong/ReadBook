@@ -1,5 +1,6 @@
 package com.example.appreadbook.Activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TruyenActivity extends AppCompatActivity {
+    private Dialog dialog;
     ListView lvDSChuong;
     ImageView imgAnhBia;
     TextView textTenTruyen,textTacGia,textTheLoai,textSlChuong;
@@ -59,7 +61,10 @@ public class TruyenActivity extends AppCompatActivity {
         btnDocTruyen.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dialog = new Dialog( TruyenActivity.this );
+                dialog.setTitle( "Nội Dung" );
+                dialog.setContentView( R.layout.activity_ttnd );
+                dialog.show();
             }
         } );
         btnTheoDoi.setOnClickListener( new View.OnClickListener() {

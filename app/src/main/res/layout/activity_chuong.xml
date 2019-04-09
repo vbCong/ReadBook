@@ -8,14 +8,7 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/dsNDAnh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ListView>
-
-    <ListView
-        android:id="@+id/dsNDVanBan"
+        android:id="@+id/listND"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

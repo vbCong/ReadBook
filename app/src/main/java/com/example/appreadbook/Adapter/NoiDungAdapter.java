@@ -53,15 +53,15 @@ public class NoiDungAdapter extends BaseAdapter {
         TextView txtND = (TextView) convertView.findViewById( R.id.textViewND );
 
         //gán giá trị
-//        if (!(NDList.get( position ).getANH()== "")){
-//            Picasso.with(context).load(NDList.get( position ).getANH()).into(imgAnh);
-//            imgAnh.setVisibility( View.VISIBLE );
-//        }
-//
-//        if(!(NDList.get( position ).getVANBAN() == "")){
-//            txtND.setText( NDList.get( position ).getVANBAN() );
-//            txtND.setVisibility( View.VISIBLE );
-//        }
+        if (!(NDList.get( position ).getANH().length() == 0)){
+            Picasso.with(context).load(NDList.get( position ).getANH()).into(imgAnh);
+            imgAnh.setVisibility( View.VISIBLE );
+        }
+
+        if(!(NDList.get( position ).getVANBAN().length() == 0)){
+            txtND.setText( NDList.get( position ).getVANBAN() );
+            txtND.setVisibility( View.VISIBLE );
+        }
         return convertView;
     }
 }
