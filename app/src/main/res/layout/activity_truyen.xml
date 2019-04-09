@@ -9,13 +9,14 @@
 
 
     <TextView
+        android:id="@+id/textViewTen"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
         android:gravity="center"
         android:text="ABC"
-        android:id="@+id/textViewTen"
         android:textColor="#03A9F4"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textSize="36sp"
+        android:typeface="normal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,16 +43,18 @@
                 android:text="Tác Giả:" />
 
             <TextView
-                android:id="@+id/tenTheLoai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Thể Loại:" />
-
-            <TextView
                 android:id="@+id/slchuong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Số Chương:" />
+                android:text="Số Chương:"
+                android:layout_marginTop="@dimen/fab_margin"/>
+
+            <TextView
+                android:id="@+id/tenTheLoai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thể Loại:"
+                android:layout_marginTop="@dimen/fab_margin"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -60,26 +63,37 @@
         android:layout_height="50dp"
         android:orientation="horizontal"
         android:weightSum="3">
+
         <Button
             android:id="@+id/btnDocTuyen"
-            android:text="Đọc Truyện"
-            android:layout_weight="1"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/colorLinear3"
+            android:fontFamily="sans-serif-light"
+            android:text="Đọc Truyện"
+            android:textColor="@color/colorGg" />
 
         <Button
             android:id="@+id/btnNoiDung"
-            android:text="Nội Dung"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/colorLinear3"
+            android:fontFamily="sans-serif-light"
+            android:text="Nội Dung"
+            android:textColor="@color/colorGg" />
 
         <Button
             android:id="@+id/btnTheoDoi"
-            android:text="Theo Dõi"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/colorLinear3"
+            android:fontFamily="sans-serif-light"
+            android:text="Theo Dõi"
+            android:textColor="@color/colorGg" />
 
     </LinearLayout>
     <ListView
