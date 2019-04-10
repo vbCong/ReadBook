@@ -1,9 +1,10 @@
 package com.example.appreadbook.Activity;
 
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,33 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.appreadbook.Adapter.TruyenAdapter;
-import com.example.appreadbook.Fragment.HomePageFragment;
-import com.example.appreadbook.Fragment.TheoDoiFragment;
-import com.example.appreadbook.Fragment.TruyenChuFragment;
-import com.example.appreadbook.Fragment.TruyenMoiFragment;
-import com.example.appreadbook.Fragment.TruyenTranhFragment;
-import com.example.appreadbook.Fragment.XemNhieuFragment;
-import com.example.appreadbook.Model.TRUYEN;
+import com.example.appreadbook.Fragment.FragmentTruyen;
+import com.example.appreadbook.Fragment.FragmentTruyenMoi;
+import com.example.appreadbook.Fragment.FragmentTruyenTL;
 import com.example.appreadbook.R;
-import com.example.appreadbook.Service.APIService;
-import com.example.appreadbook.Service.Dataservice;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ListView lvDSTruyen;
-    ArrayList<TRUYEN> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,50 +49,15 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener( toggle );
         toggle.syncState();
         if(savedInstanceState == null) {
-           // getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomePageFragment()).commit();
+            //getSupportFragmentManager().beginTransaction().replace(R.id., new HomePageFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
-        AnhXa();
-        GetData();
-        ClickItem();
-    }
-
-    private void ClickItem() {
-        lvDSTruyen.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(MainActivity.this, data.get( position ).getID(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent( MainActivity.this, TruyenActivity.class );
-                intent.putExtra( "ID", data.get( position ).getID() );
-                startActivity( intent );
-            }
-        } );
-    }
-
-    private void GetData() {
-        data = new ArrayList<>(  );
-
-        Dataservice dataservice = APIService.getService();
-        Call<List<TRUYEN>> call = dataservice.GETTRUYEN();
-        call.enqueue( new Callback<List<TRUYEN>>() {
-            @Override
-            public void onResponse(Call<List<TRUYEN>> call, Response<List<TRUYEN>> response) {
-                data = (ArrayList<TRUYEN>) response.body();
-                TruyenAdapter adapter = new TruyenAdapter(MainActivity.this, R.layout.dong_truyen, data);
-                lvDSTruyen.setAdapter( adapter );
-            }
-
-            @Override
-            public void onFailure(Call<List<TRUYEN>> call, Throwable t) {
-                Log.d("Tag", t.getMessage());
-                t.printStackTrace();
-            }
-        } );
-    }
-
-    private void AnhXa() {
-        lvDSTruyen = findViewById(R.id.listviewDSTruyen);
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        Fragment fragment = new FragmentTruyen();
+        transaction.replace( R.id.framecontent, fragment );
+        transaction.commit();
     }
 
     @Override
@@ -131,9 +79,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.menuSettings:
                 Toast.makeText(this, "You choose Settings", Toast.LENGTH_SHORT).show();
@@ -161,9 +106,9 @@ public class MainActivity extends AppCompatActivity
 //                        startMain.addCategory(Intent.CATEGORY_HOME);
 //                        startActivity(startMain);
 //                        finish();
-//                    }
-//                });
-                break;
+//                  }
+//              });
+            break;
         }
 
         return super.onOptionsItemSelected( item );
@@ -172,26 +117,51 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        Fragment fragment = null;
         switch (item.getItemId()) {
             case R.id.nav_home:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomePageFragment()).commit();
+                fragment = new FragmentTruyen();
                 break;
-            case R.id.nav_alarm:
-                //().beginTransaction().replace(R.id.fragment_container, new TheoDoiFragment()).commit();
+            case R.id.nav_truyenmoi:
+                fragment = new FragmentTruyenMoi();
                 break;
-            case R.id.nav_newbook:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TruyenMoiFragment()).commit();
+            case R.id.nav_kiemhiep:
+                fragment = FragmentTruyenTL.newInstance( 1 );
                 break;
-            case R.id.nav_xemnhieu:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new XemNhieuFragment()).commit();
+            case R.id.nav_trinhtham:
+                fragment = FragmentTruyenTL.newInstance( 2 );
                 break;
-            case R.id.nav_image:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TruyenTranhFragment()).commit();
+            case R.id.na_tieuthuyet:
+                fragment = FragmentTruyenTL.newInstance( 3 );
                 break;
-            case R.id.nav_text:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TruyenChuFragment()).commit();
+            case R.id.nav_vanhoc:
+                fragment = FragmentTruyenTL.newInstance( 4 );
+                break;
+            case R.id.nav_ngontinh:
+                fragment = FragmentTruyenTL.newInstance( 5 );
+                break;
+            case R.id.nav_dammy:
+                fragment = FragmentTruyenTL.newInstance( 6 );
+                break;
+            case R.id.nav_tuduy:
+                fragment = FragmentTruyenTL.newInstance( 7 );
+                break;
+            case R.id.nav_khoahoc:
+                fragment = FragmentTruyenTL.newInstance( 8 );
+                break;
+            case R.id.nav_truyentranh:
+                fragment = FragmentTruyenTL.newInstance( 9 );
+                break;
+            case R.id.nav_tho:
+                fragment = FragmentTruyenTL.newInstance( 10 );
                 break;
         }
+
+        transaction.replace( R.id.framecontent, fragment );
+        transaction.commit();
+
         DrawerLayout drawer = (DrawerLayout) findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );
         return true;

@@ -9,29 +9,56 @@
             android:icon="@drawable/home"
             android:title="Trang Chủ" />
         <item
-            android:id="@+id/nav_alarm"
-            android:icon="@drawable/alarm"
-            android:title="Truyện Đang Theo Dõi" />
-        <item
-            android:id="@+id/nav_newbook"
+            android:id="@+id/nav_truyenmoi"
             android:icon="@drawable/newbook"
             android:title="Truyên Mới" />
-        <item
-            android:id="@+id/nav_xemnhieu"
-            android:icon="@drawable/eye"
-            android:title="Truyên Xem Nhiều" />
     </group>
 
     <item android:title="Thể loại">
         <menu>
             <item
-                android:id="@+id/nav_image"
+                android:id="@+id/nav_kiemhiep"
+                android:icon="@drawable/image"
+                android:title="Kiếm Hiệp" />
+
+            <item
+                android:id="@+id/nav_trinhtham"
+                android:icon="@drawable/image"
+                android:title="Trinh Thám" />
+
+            <item
+                android:id="@+id/na_tieuthuyet"
+                android:icon="@drawable/image"
+                android:title="Tiểu Thuyết" />
+            <item
+                android:id="@+id/nav_vanhoc"
+                android:icon="@drawable/image"
+                android:title="Văn Học" />
+            <item
+                android:id="@+id/nav_ngontinh"
+                android:icon="@drawable/image"
+                android:title="Ngôn Tình" />
+            <item
+                android:id="@+id/nav_dammy"
+                android:icon="@drawable/image"
+                android:title="Đam Mỹ" />
+            <item
+                android:id="@+id/nav_tuduy"
+                android:icon="@drawable/image"
+                android:title="Tư Duy" />
+            <item
+                android:id="@+id/nav_khoahoc"
+                android:icon="@drawable/image"
+                android:title="Khoa Học" />
+            <item
+                android:id="@+id/nav_truyentranh"
                 android:icon="@drawable/image"
                 android:title="Truyện Tranh" />
             <item
-                android:id="@+id/nav_text"
-                android:icon="@drawable/text"
-                android:title="Truyện Chữ" />
+                android:id="@+id/nav_tho"
+                android:icon="@drawable/image"
+                android:title="Thơ" />
+
         </menu>
     </item>
 

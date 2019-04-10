@@ -40,12 +40,13 @@ public class TruyenActivity extends AppCompatActivity {
     ListView lvDSChuong;
     ImageView imgAnhBia;
     Call<TRUYEN> call;
-    TextView textTenTruyen,textTacGia,textTheLoai,textSlChuong;
+    TextView textTacGia,textTheLoai,textSlChuong;
     Button btnDocTruyen,btnNoiDung,btnTheoDoi;
 
     ArrayList<CHUONG> data;
     int ID;
     String ttnd;
+    String tenTr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,27 +56,29 @@ public class TruyenActivity extends AppCompatActivity {
         GetDataLocal();
         GetData();
         ClickItem();
-        SetToolbar();
     }
 
     private void ClickItem() {
         lvDSChuong.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent( TruyenActivity.this, ChuongActivity.class );
-                intent.putExtra( "IDCHUONG", data.get( position ).getID() );
-                startActivity( intent );
+            Intent intent = new Intent( TruyenActivity.this, ChuongActivity.class );
+            intent.putExtra( "IDCHUONG", data.get( position ).getID() );
+            intent.putExtra( "TenTr", tenTr );
+            intent.putExtra( "IDTR", data.get( position ).getIDTRUYEN() );
+            intent.putExtra( "POS", position );
+            startActivity( intent );
             }
         } );
         btnNoiDung.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog = new Dialog( TruyenActivity.this );
-                dialog.setTitle( "Nội Dung" );
-                dialog.setContentView( R.layout.dialog_ttnd );
-                TextView txtTTND = (TextView) dialog.findViewById( R.id.textTTND );
-                txtTTND.setText( ttnd );
-                dialog.show();
+            dialog = new Dialog( TruyenActivity.this );
+            dialog.setTitle( "Nội Dung" );
+            dialog.setContentView( R.layout.dialog_ttnd );
+            TextView txtTTND = (TextView) dialog.findViewById( R.id.textTTND );
+            txtTTND.setText( ttnd );
+            dialog.show();
             }
         } );
         btnTheoDoi.setOnClickListener( new View.OnClickListener() {
@@ -100,7 +103,8 @@ public class TruyenActivity extends AppCompatActivity {
             public void onResponse(Call<TRUYEN> call, Response<TRUYEN> response) {
                 TRUYEN truyen  = response.body();
                 ttnd = truyen.getTTND();
-                textTenTruyen.setText( truyen.getTEN() );
+                tenTr = truyen.getTEN();
+                SetToolbar();
                 textTacGia.setText( "Tác Giả: " + truyen.getTACGIA() );
                 textTheLoai.setText( "Thể Loại: " + truyen.getTENTHELOAI() );
                 textSlChuong.setText( "Số Chương: " + "0");
@@ -122,7 +126,7 @@ public class TruyenActivity extends AppCompatActivity {
                 data = (ArrayList<CHUONG>) response.body();
                 ArrayList<String> ListChuong = new ArrayList<>(  );
                 for (int i = 0; i < data.size(); i++ ){
-                    ListChuong.add( "Chương " + (i + 1)  + " : " + data.get( i ).getTENCHUONG());
+                    ListChuong.add( (i + 1)  + " : " + data.get( i ).getTENCHUONG());
                 }
 
                 ArrayAdapter adapter = new ArrayAdapter( TruyenActivity.this, android.R.layout.simple_list_item_1, ListChuong );
@@ -140,12 +144,10 @@ public class TruyenActivity extends AppCompatActivity {
 
     private void SetToolbar() {
         //Set lại title
-        toolbar.setTitle("");
+        toolbar.setTitle(tenTr);
+        //Toast.makeText(TruyenActivity.this, tenTr + "", Toast.LENGTH_SHORT).show();
         setSupportActionBar(toolbar);
-
         //Thêm nút navigation và Thay đổi icon
-
-        //Lấy chiều cao của ActionBar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
@@ -160,7 +162,6 @@ public class TruyenActivity extends AppCompatActivity {
     private void AnhXa() {
         lvDSChuong = (ListView)findViewById( R.id.listviewDSChuong );
         imgAnhBia = (ImageView)findViewById( R.id.imageViewAnhBia );
-        textTenTruyen = (TextView)findViewById( R.id.textViewTen );
         textTacGia = (TextView)findViewById( R.id.tenTacGia );
         textTheLoai = (TextView)findViewById( R.id.tenTheLoai );
         textSlChuong = (TextView)findViewById( R.id.slchuong );

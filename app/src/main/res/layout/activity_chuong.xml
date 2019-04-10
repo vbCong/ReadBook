@@ -7,11 +7,46 @@
     tools:context=".Activity.ChuongActivity"
     android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/listND"
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp"
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@android:color/holo_blue_light">
+    </android.support.v7.widget.Toolbar>
 
-    </ListView>
+    <FrameLayout
+        android:id="@+id/framecontent"
+        android:layout_width="match_parent"
+        android:layout_height="650dp">
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="10">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_weight="2"
+            android:text="Back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:text="Next"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </LinearLayout>
