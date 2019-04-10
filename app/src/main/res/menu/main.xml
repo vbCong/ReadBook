@@ -19,7 +19,7 @@
                 android:id="@+id/menuPhone"/>
         </menu>
     </item>
-    <item android:title="Exit"
+      <item android:title="Exit"
         android:id="@+id/menuExit"
         android:orderInCategory="4"/>
 </menu>

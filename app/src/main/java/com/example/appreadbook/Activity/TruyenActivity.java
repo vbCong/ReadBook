@@ -51,13 +51,11 @@ public class TruyenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_truyen );
-        Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
-        setSupportActionBar( toolbar );
-
         AnhXa();
         GetDataLocal();
         GetData();
         ClickItem();
+        SetToolbar();
     }
 
     private void ClickItem() {
@@ -142,10 +140,11 @@ public class TruyenActivity extends AppCompatActivity {
 
     private void SetToolbar() {
         //Set lại title
-        toolbar.setTitle("0");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         //Thêm nút navigation và Thay đổi icon
+
         //Lấy chiều cao của ActionBar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
