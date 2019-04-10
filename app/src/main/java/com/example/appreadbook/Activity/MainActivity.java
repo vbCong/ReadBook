@@ -3,8 +3,6 @@ package com.example.appreadbook.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,10 +15,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.appreadbook.Adapter.TruyenAdapter;
+import com.example.appreadbook.Fragment.HomePageFragment;
+import com.example.appreadbook.Fragment.TheoDoiFragment;
+import com.example.appreadbook.Fragment.TruyenChuFragment;
+import com.example.appreadbook.Fragment.TruyenMoiFragment;
+import com.example.appreadbook.Fragment.TruyenTranhFragment;
+import com.example.appreadbook.Fragment.XemNhieuFragment;
 import com.example.appreadbook.Model.TRUYEN;
 import com.example.appreadbook.R;
 import com.example.appreadbook.Service.APIService;
@@ -55,14 +58,17 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById( R.id.drawer_layout );
+        DrawerLayout drawer = (DrawerLayout) findViewById( R.id.drawer_layout);
+        NavigationView navigationView = (NavigationView) findViewById( R.id.nav_view );
+        navigationView.setNavigationItemSelectedListener( this );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close );
         drawer.addDrawerListener( toggle );
         toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById( R.id.nav_view );
-        navigationView.setNavigationItemSelectedListener( this );
+        if(savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomePageFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
 
         AnhXa();
         GetData();
@@ -166,27 +172,26 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-//            MainActivity mainActivity = new MainActivity();
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            fragmentManager.beginTransaction().replace(R.id.fragment, mainActivity).commit();
-        } else if (id == R.id.nav_alarm) {
-//            TruyenActivity truyenActivity = new TruyenActivity();
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            fragmentManager.beginTransaction().replace(R.id.fragment, truyenActivity).commit();
-        } else if (id == R.id.nav_newbook) {
-
-        } else if (id == R.id.nav_xemnhieu) {
-
-        } else if (id == R.id.nav_image) {
-
-        } else if (id == R.id.nav_text) {
-
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomePageFragment()).commit();
+                break;
+            case R.id.nav_alarm:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TheoDoiFragment()).commit();
+                break;
+            case R.id.nav_newbook:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TruyenMoiFragment()).commit();
+                break;
+            case R.id.nav_xemnhieu:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new XemNhieuFragment()).commit();
+                break;
+            case R.id.nav_image:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TruyenTranhFragment()).commit();
+                break;
+            case R.id.nav_text:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TruyenChuFragment()).commit();
+                break;
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );
         return true;
