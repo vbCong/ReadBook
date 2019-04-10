@@ -44,7 +44,7 @@ public class ChuongAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-//tạo dòng trả về view
+        //tạo dòng trả về view
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(layout, null);
         //ánh xạ view

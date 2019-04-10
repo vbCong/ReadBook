@@ -4,18 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.TruyenActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Activity.TruyenActivity">
 
-
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@android:color/holo_blue_light">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backButton"
+            android:src="@drawable/back" />
+    </android.support.v7.widget.Toolbar>
     <TextView
         android:id="@+id/textViewTen"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="50dp"
         android:gravity="center"
-        android:text="ABC"
         android:textColor="#03A9F4"
-        android:textSize="36sp"
+        android:textSize="25sp"
         android:typeface="normal" />
 
     <LinearLayout
@@ -25,8 +35,9 @@
 
         <ImageView
             android:id="@+id/imageViewAnhBia"
-            android:layout_width="150dp"
+            android:layout_width="140dp"
             android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,18 +57,19 @@
                 android:id="@+id/slchuong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Số Chương:"
-                android:layout_marginTop="@dimen/fab_margin"/>
+                android:layout_marginTop="@dimen/fab_margin"
+                android:text="Số Chương:" />
 
             <TextView
                 android:id="@+id/tenTheLoai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thể Loại:"
-                android:layout_marginTop="@dimen/fab_margin"/>
+                android:layout_marginTop="@dimen/fab_margin"
+                android:text="Thể Loại:" />
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -68,9 +80,10 @@
             android:id="@+id/btnDocTuyen"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@color/colorLinear3"
+            android:background="@android:color/holo_blue_light"
             android:fontFamily="sans-serif-light"
             android:text="Đọc Truyện"
             android:textColor="@color/colorGg" />
@@ -78,9 +91,10 @@
         <Button
             android:id="@+id/btnNoiDung"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@color/colorLinear3"
+            android:background="@android:color/holo_green_light"
             android:fontFamily="sans-serif-light"
             android:text="Nội Dung"
             android:textColor="@color/colorGg" />
@@ -88,14 +102,17 @@
         <Button
             android:id="@+id/btnTheoDoi"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@color/colorLinear3"
+            android:background="@android:color/holo_red_light"
             android:fontFamily="sans-serif-light"
             android:text="Theo Dõi"
             android:textColor="@color/colorGg" />
 
     </LinearLayout>
+
     <ListView
         android:id="@+id/listviewDSChuong"
         android:layout_width="match_parent"

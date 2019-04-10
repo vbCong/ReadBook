@@ -2,8 +2,14 @@ package com.example.appreadbook.Activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +36,7 @@ import retrofit2.Response;
 
 public class TruyenActivity extends AppCompatActivity {
     private Dialog dialog;
+    android.support.v7.widget.Toolbar toolbar;
     ListView lvDSChuong;
     ImageView imgAnhBia;
     Call<TRUYEN> call;
@@ -44,6 +51,8 @@ public class TruyenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_truyen );
+        Toolbar toolbar = (Toolbar) findViewById( R.id.toolbar );
+        setSupportActionBar( toolbar );
 
         AnhXa();
         GetDataLocal();
@@ -130,6 +139,25 @@ public class TruyenActivity extends AppCompatActivity {
         } );
     }
 
+
+    private void SetToolbar() {
+        //Set lại title
+        toolbar.setTitle("0");
+        setSupportActionBar(toolbar);
+
+        //Thêm nút navigation và Thay đổi icon
+        //Lấy chiều cao của ActionBar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
     private void AnhXa() {
         lvDSChuong = (ListView)findViewById( R.id.listviewDSChuong );
         imgAnhBia = (ImageView)findViewById( R.id.imageViewAnhBia );
@@ -140,7 +168,7 @@ public class TruyenActivity extends AppCompatActivity {
         btnDocTruyen = (Button)findViewById( R.id.btnDocTuyen );
         btnNoiDung = (Button)findViewById( R.id.btnNoiDung );
         btnTheoDoi = (Button)findViewById( R.id.btnTheoDoi );
-
+        toolbar = (Toolbar)findViewById( R.id.toolbar );
     }
 
     private void GetDataLocal() {
